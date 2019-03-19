@@ -7,8 +7,6 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <math.h>
 
-cv::Mat preprocess(cv::Mat, int, int,
-  std::vector<double>,
-  std::vector<double>);
+cv::Mat preprocess(cv::Mat, int, int);
 
 #endif

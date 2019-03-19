@@ -1,6 +1,4 @@
-#ifndef TORCHUTILS_H // To make sure you don't declare the function more than once by including the header multiple times.
-#define TORCHUTILS_H
-
+#pragma once
 #include <iostream>
 #include <vector>
 #include <tuple>
@@ -19,9 +17,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 
 std::shared_ptr<torch::jit::script::Module> read_model(std::string);
-std::vector<float> forward(std::vector<cv::Mat>,
-  std::shared_ptr<torch::jit::script::Module>);
-std::tuple<std::string, std::string> postprocess(std::vector<float>,
-  std::vector<std::string>);
-
-#endif
+std::vector<torch::Tensor> forward(cv::Mat, std::shared_ptr<torch::jit::script::Module>);
+std::vector<float> as_float(torch::Tensor o);
+std::vector<long> as_long(torch::Tensor o);
+std::tuple<std::string, std::string> postprocess(std::vector<float>, std::vector<std::string>);
